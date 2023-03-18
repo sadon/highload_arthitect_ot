@@ -2,5 +2,9 @@ version: "3.8"
 services:
   app :
     build: ./python-engine/
+    ports:
+      - "8000:80"
   db:
     build: ./postgres/
+    ports:
+      - "8432:5432"
