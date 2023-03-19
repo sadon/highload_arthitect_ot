@@ -32,3 +32,22 @@ docker compose up --build
 
 http://localhost:8000 - Main application
 psql: localhost:8432 Postgresc DB: database
+
+
+---
+
+# Start local server 
+`uvicorn sql_app.main:app --reload`
+
+
+# Post example
+{
+  "email": "test-2@example.com",
+  "password": "test",
+  "first_name": "Dmitry",
+  "second_name": "Dubovitskiy",
+  "birthday": "1985-05-1985",
+  "male_sign": true,
+  "biography": "races, languages, python",
+  "city": "Belgrade"
+}
