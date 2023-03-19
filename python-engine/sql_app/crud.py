@@ -18,11 +18,9 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_user(db: Session, user: schemas.UserCreate):
-    to_db_user = user.dict()
-    to_db_user['hashed_password'] = hashlib.sha1( user.password.encode()).hexdigest()
-    del to_db_user['password']
-    db_user = models.User(**to_db_user)
+    fake_hashed_password = hashlib.sha1( user.password ).hexdigest()
 
+    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)

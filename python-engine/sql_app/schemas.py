@@ -1,20 +1,26 @@
-import datetime
 from typing import Union
 
 from pydantic import BaseModel
 
-
 class UserBase(BaseModel):
     email: str
+    """
+    firstname = Column(String, unique=False, index=False)
+    lastname = Column(String, unique=False, index=False)
+    birthday = Column(Date, unique=False, index=False)
+    male_sign = Column(Boolean, unique=False, index=False)
+    interests = Column(String, unique=False, index=True)
+    city = Column(String, unique=False, index=True)
+    """
 
 
 class UserCreate(UserBase):
     password: str
-    first_name: str
-    second_name: str
-    birthday: datetime.date #?
+    firstname: str
+    lastname: str
+    birthday: str #?
     male_sign: bool
-    biography: str
+    interests: str
     city: str
 
 
@@ -22,11 +28,11 @@ class User(UserBase):
     id: int
     is_active: bool
 
-    first_name: str
-    second_name: str
-    birthday: datetime.date  # ?
+    firstname: str
+    lastname: str
+    birthday: str  # ?
     male_sign: bool
-    biography: str
+    interests: str
     city: str
 
     class Config:
