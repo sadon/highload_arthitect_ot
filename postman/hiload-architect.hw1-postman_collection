@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "5a104ff4-9185-4d5f-b584-2c34278f838c",
+		"name": "hiload-architect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20754180"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/user/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test-15@example.com\",\r\n  \"password\": \"test\",\r\n  \"first_name\": \"Dmitry\",\r\n  \"second_name\": \"Dmitriev\",\r\n  \"birthday\": \"2000-05-09\",\r\n  \"male_sign\": true,\r\n  \"biography\": \"races, languages, python\",\r\n  \"city\": \"Belgrade\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "rere",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/user/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test-15@example.com\",\r\n  \"password\": \"test\",\r\n  \"first_name\": \"Dmitry\",\r\n  \"second_name\": \"Dmitriev\",\r\n  \"birthday\": \"2000-05-09\",\r\n  \"male_sign\": true,\r\n  \"biography\": \"races, languages, python\",\r\n  \"city\": \"Belgrade\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "rere",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/user/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test-15@example.com\",\r\n  \"password\": \"test\",\r\n  \"first_name\": \"Dmitry\",\r\n  \"second_name\": \"Dmitriev\",\r\n  \"birthday\": \"2000-05-09\",\r\n  \"male_sign\": true,\r\n  \"biography\": \"races, languages, python\",\r\n  \"city\": \"Belgrade\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "rere",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/user/get/10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/user/get/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"get",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/user/get/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/user/get/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"get",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

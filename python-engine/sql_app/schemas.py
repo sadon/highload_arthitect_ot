@@ -7,6 +7,16 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
     email: str
 
+class UserLogin(BaseModel):
+    id: int
+    password: str
+
+
+class UserToken(BaseModel):
+    #import uuid
+    #id: int
+    token: str
+
 
 class UserCreate(UserBase):
     password: str

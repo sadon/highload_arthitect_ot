@@ -5,10 +5,11 @@ from sqlalchemy.orm import sessionmaker
 db_name = 'database'
 db_user = 'username'
 db_pass = 'secret'
-#db_host = 'db'
-#db_port = '5432'
-db_host = 'localhost'
-db_port = '8432'
+
+#Local development
+#db_host = 'localhost'
+db_host = 'db'
+db_port = '5432'
 
 
 # Connect to the database
