@@ -65,6 +65,20 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return users
 
 
+@app.post("/users/search/by_fl_names", response_model=list[schemas.User])
+def read_users(
+        first_prefix: str = "", second_prefix: str = "",
+        skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
+        ):
+    users = crud.get_users_by_fl_names(
+        db,
+        first_prefix=first_prefix, second_prefix=second_prefix,
+        skip=skip, limit=limit
+    )
+
+    return users
+
+
 @app.get("/user/get/{id}", response_model=schemas.User)
 def read_user(id: int, db: Session = Depends(get_db)):
     #400, но 422 parser срабатывает раньше

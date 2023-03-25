@@ -17,6 +17,17 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 
+def get_users_by_fl_names(db: Session, first_prefix = "", second_prefix = "", skip: int = 0, limit: int = 100):
+
+    query =  db.query(models.User).filter(
+        models.User.first_name.like(f"{first_prefix}%"),
+        models.User.second_name.like(f"{second_prefix}%")
+    ).offset(skip).limit(limit)#.all()
+
+    print(query)
+    return query.all()
+
+
 def create_user(db: Session, user: schemas.UserCreate):
     to_db_user = user.dict()
     to_db_user['hashed_password'] = hashlib.sha1( user.password.encode()).hexdigest()
