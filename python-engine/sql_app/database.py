@@ -16,7 +16,8 @@ db_port = '5432'
 SQLALCHEMY_DATABASE_URL = 'postgresql://{}:{}@{}:{}/{}'.format(db_user, db_pass, db_host, db_port, db_name)
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL # only for SQLite, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL, # only for SQLite, connect_args={"check_same_thread": False}
+    pool_size=100, max_overflow=0
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

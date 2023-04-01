@@ -2,9 +2,19 @@ version: "3.8"
 services:
   app :
     build: ./python-engine/
+    restart: always
     ports:
       - "8000:80"
   db:
     build: ./postgres/
+    #restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 100M
+        reservations:
+          cpus: '0.05'
+          memory: 50M
     ports:
       - "8432:5432"

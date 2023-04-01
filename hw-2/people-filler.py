@@ -19,7 +19,7 @@ with open('people.csv', newline='', encoding='utf-8') as f:
     for row in reader:
         print(row, reader.line_num)
         if to_process == False:
-            if (row[0] == "Воробьева Екатерина") and (row[2] == "Ивантеевка"):
+            if (row[0] == "Зубков Глеб") and (row[2] == "Кемерово"):
                 to_process = True
                 continue
             else:

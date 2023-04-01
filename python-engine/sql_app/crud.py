@@ -17,11 +17,11 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 
-def get_users_by_fl_names(db: Session, first_prefix = "", second_prefix = "", skip: int = 0, limit: int = 100):
+def get_users_by_fl_names(db: Session, first_name="", last_name="", skip: int = 0, limit: int = 100):
 
-    query =  db.query(models.User).filter(
-        models.User.first_name.like(f"{first_prefix}%"),
-        models.User.second_name.like(f"{second_prefix}%")
+    query = db.query(models.User).filter(
+        models.User.first_name.like(f"{first_name}%"),
+        models.User.second_name.like(f"{last_name}%")
     ).offset(skip).limit(limit)#.all()
 
     print(query)

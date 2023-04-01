@@ -65,14 +65,14 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return users
 
 
-@app.post("/users/search/by_fl_names", response_model=list[schemas.User])
+@app.get("/user/search", response_model=list[schemas.User])
 def read_users(
-        first_prefix: str = "", second_prefix: str = "",
+        first_name: str = "", last_name: str = "",
         skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
         ):
     users = crud.get_users_by_fl_names(
         db,
-        first_prefix=first_prefix, second_prefix=second_prefix,
+        first_name=first_name, last_name=last_name,
         skip=skip, limit=limit
     )
 
