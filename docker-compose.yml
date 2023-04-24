@@ -3,11 +3,6 @@ services:
   app :
     build: ./python-engine/
     restart: always
-    ports:
-      - "8000:80"
-  db:
-    build: ./postgres/
-    #restart: always
     deploy:
       resources:
         limits:
@@ -17,4 +12,62 @@ services:
           cpus: '0.05'
           memory: 50M
     ports:
+      - "8000:80"
+    networks:
+      - replicas
+  db:
+    build: ./postgres/
+    #restart: always
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
+        reservations:
+          cpus: '0.05'
+          memory: 500M
+    ports:
       - "8432:5432"
+    networks:
+      - replicas
+  db-replica-1:
+    build: ./postgres/
+    #restart: always
+    #entrypoint: '/bin/sh -c "sleep infinity"'
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
+        reservations:
+          cpus: '0.05'
+          memory: 500M
+    ports:
+      - "9432:5432"
+    networks:
+      - replicas
+  db-replica-2:
+    build: ./postgres/
+    #restart: always
+    #entrypoint: 'sleep infinity'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
+        reservations:
+          cpus: '0.05'
+          memory: 500M
+    ports:
+      - "10432:5432"
+    networks:
+      - replicas
+networks:
+  replicas:
+    name: replicas
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.26.0.1/16

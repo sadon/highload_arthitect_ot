@@ -8,7 +8,8 @@ db_pass = 'secret'
 
 #Local development
 #db_host = 'localhost'
-db_host = 'db'
+#db_host = 'db'
+db_host = 'db-replica-1'
 db_port = '5432'
 
 

@@ -84,3 +84,16 @@ docker compose up --build
   "city": "Belgrade"
 }
 ```
+
+---
+
+_восстановление дампа_
+
+docker ps
+docker cp ./full-dump.sql d885736a:/
+winpty docker exec -it d8857.. sh
+ su - postgres
+ psql -U username -d database -f ./full-dump.sql
+ psql -U username -d postgres -f ./full-dump.sql
+apt update
+apt install mc nano -y 

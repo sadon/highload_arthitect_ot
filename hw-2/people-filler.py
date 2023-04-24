@@ -33,7 +33,7 @@ with open('people.csv', newline='', encoding='utf-8') as f:
             male_sign = "true"
         else:
             male_sign= "false"
-        email = f"some-email{rdays()}-{birthday.isoformat()}@example.com"
+        email = f"some-{rdays()}-email{rdays()}-{birthday.isoformat()}@example.com"
 
         fields = f"""
               "email": "{email}",
@@ -47,13 +47,24 @@ with open('people.csv', newline='', encoding='utf-8') as f:
         """
         json_obj = json.loads("{"+fields+"}")
 
+        try:
 
-        response = requests.post(
-            'http://127.0.0.1:8000/user/register',
-            params={},
-            headers=headers,
-            data=json.dumps(json_obj).encode("utf-8")
-        )
-        if response.status_code >= 400:
-            print(response.text)
+            response = requests.post(
+                'http://127.0.0.1:8000/user/register',
+                params={},
+                headers=headers,
+                data=json.dumps(json_obj).encode("utf-8"),
+                timeout = 3
+            )
+            from time import sleep
 
+            sleep(1)
+
+            if response.status_code != 200:
+                print(response.text)
+
+        except requests.Timeout:
+            # back off and retry
+            #pass
+
+            print("skipped")
