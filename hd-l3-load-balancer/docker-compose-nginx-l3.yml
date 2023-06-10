@@ -1,0 +1,40 @@
+version: "3.8"
+#volumes:
+#  lb-conf:
+#    - ./lb.conf::/etc/nginx/conf.d/lb.conf
+services:
+  nginx-lb:
+    ports:
+      - "8080:80"
+    image: "nginx"
+    volumes:
+      - ./lb.stream:/etc/nginx/conf.d/lb.stream
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - ng
+  nginx-w1:
+    ports:
+      - "8001:80"
+    image: "httpd"
+    networks:
+      - ng
+  nginx-w2:
+    ports:
+      - "8002:80"
+    image: "nginx"
+    networks:
+      - ng
+  nginx-w3:
+    ports:
+      - "8003:80"
+    image: "httpd"
+    networks:
+      - ng
+
+networks:
+  ng:
+    name: ng
+    ipam:
+      driver: default
+      #config:
+      #  - subnet: 172.24.1.1/28

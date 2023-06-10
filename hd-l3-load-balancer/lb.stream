@@ -1,0 +1,15 @@
+#main context
+stream {
+    upstream stream_backend {
+        random two; #random ;#two least_time=last_byte;
+        server nginx-w3:80 weight=2;
+        server nginx-w2:80 weight=2;
+        server nginx-w1:80 weight=2;
+    }
+    server {
+        listen  80;
+        proxy_pass    stream_backend;
+        proxy_timeout 3s;
+        proxy_connect_timeout 1s;
+    }
+}
